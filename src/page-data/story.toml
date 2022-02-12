@@ -1,0 +1,15 @@
+headline = "Faith's Story"
+[firstSection]
+    paragraph = "Faith Connors is one of the most skilled Runners in Glass. Her carefree attitude cannot last forever though. Some day she'll need to face up to the Conglomorate as well as her own troubled past."
+[characters]
+    name = ["Noah", "Birdman", "Nomad", "Dogen", "Icarus"]
+[firstMainChar]
+    name = "Gabriel"
+    bio = "Gabriel Kruger is the ruthless head of KrugerSec and is best not messed with. Kruger’s contempt for those living off the Grid is palpable and his hatred for the resistance, whom he relentlessly hunts, is immense. But within Kruger there are also feelings of conflict and guilt, stemming from the death of a loved one."
+[secondMainChar]
+    name = "Rebecca"
+    bio = "Once she was an aggressive idealist and proponent of worker's rights and social justice, but after losing many friends in the November Riots Rebecca Thane became a woman driven purely by revenge. Always prone to rash decisions she had advocated early on that the protest movement should employ violent means against the government and the corporations."
+[districts]
+    header = "Discover Glass"
+    subHeader = "The Largest City in Cascadia"
+    name = ["Anchor", "Downtown", "The View", "Development Zone G", "Sky City and The Shard", "Omnistat Tunnels"]

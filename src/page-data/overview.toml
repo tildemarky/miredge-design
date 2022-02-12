@@ -1,0 +1,15 @@
+firstHeadline = "run"
+secondHeadline = "fight save"
+thirdHeadline = "New Additions"
+[firstSection]
+    title = "Traversal"
+    paragraph = "Hit top speed quickly zipping down wire lines. Balance on pipes before smoothly dropping to a hang before climbing, hand over hand, under an obstacle. Run vertically and horizontally on any wall and use your environment to swing around corners or over gaps. Build momentum to do daring jumps between rooftops or stylish slides through tight spaces."
+[secondSection]
+    title = "Momentus Combat"
+    paragraph = "Faith doesn't need a weapon; she uses her environment, momentum, and physicality to overcome any challenge. She can use her momentum to deliver heavy blows or to flow right through an opponent when taking them down isn’t necessary. Movement is her defence and momentum her power."
+[thirdSection]
+    title = "Mag Rope"
+    paragraph = "Latches on to specific cameras in the world, using the Conglomerate’s own surveillance equipment against them to gain new and unique traversal opportunities."
+[fourthSection]
+    title = "Focus"
+    paragraph = "Focus is gained from free running, and once Faith has Focus enemies cannot hit her. Focus is lost from low speed and being attacked, so it is essential to maintain a balance of out-traversing opponents and engaging them directly."
