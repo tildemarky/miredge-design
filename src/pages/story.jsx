@@ -1,12 +1,12 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import { device } from '../components/device';
+import React from "react";
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import styled from "styled-components";
+import { device } from "../components/device";
 
-import Layout from '../components/layout';
-import Container from '../components/container';
-import Footer from '../components/footer';
+import Layout from "../components/layout";
+import Container from "../components/container";
+import Footer from "../components/footer";
 
 const HeadlineText = styled.div`
   display: flex;
@@ -31,9 +31,12 @@ const HeadlineImages = styled.div`
   height: 70vh;
   mask-image: linear-gradient(to top, black 0%, black 65%, transparent 100%);
   z-index: -1;
+  > div {
+    margin: -2px;
+  }
   > div img {
     object-position: center top !important;
-  }  
+  }
   > * {
     flex: 1;
   }
@@ -55,7 +58,8 @@ const GabandRebecca = styled.div`
   h2 {
     font-size: 2em;
   }
-  .Gab, .Reb {
+  .Gab,
+  .Reb {
     display: flex;
     flex-wrap: wrap;
   }
@@ -68,7 +72,7 @@ const GabandRebecca = styled.div`
     writing-mode: vertical-rl;
     text-align: center;
   }
-  div >:first-child {
+  div > :first-child {
     min-width: 32vw;
     height: 35vh;
   }
@@ -82,7 +86,8 @@ const GabandRebecca = styled.div`
     clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
   }
   @media only screen and ${device.tablet} {
-    .Gab, .Reb {
+    .Gab,
+    .Reb {
       justify-content: center;
       text-align: center;
     }
@@ -92,7 +97,7 @@ const GabandRebecca = styled.div`
     }
   }
   @media ${device.laptop} {
-    div >:first-child {
+    div > :first-child {
       height: 400px;
     }
   }
@@ -112,8 +117,8 @@ const DistrictGrid = styled.div`
     -webkit-overflow-scrolling: touch;
   }
   > div {
-    flex: 0 0 auto;    
-    transition: all 0.5s ease; 
+    flex: 0 0 auto;
+    transition: all 0.5s ease;
     margin: 0 1.5rem 1.5rem 0;
   }
   > div:first-of-type {
@@ -128,7 +133,7 @@ const DistrictGrid = styled.div`
   > div div {
     height: 150px;
     width: 250px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
   }
   > div > span {
     position: relative;
@@ -178,19 +183,27 @@ const StoryPage = ({ data }) => (
           <p>{data.pageDataStoryToml.firstSection.paragraph}</p>
         </HeadlineText>
         <HeadlineImages>
-          <Img fluid={data.faithFace.childImageSharp.fluid} />
-          <Img fluid={data.faithFaceFlip.childImageSharp.fluid} />
+          <GatsbyImage image={data.faithFace.childImageSharp.gatsbyImageData} />
+          <GatsbyImage
+            image={data.faithFaceFlip.childImageSharp.gatsbyImageData}
+          />
         </HeadlineImages>
       </div>
       <RivalryTitle>Rivalry</RivalryTitle>
       <GabandRebecca>
-        <div className="Gab">        
-          <Img className="GabImage" fluid={data.gabriel.childImageSharp.fluid} />
+        <div className="Gab">
+          <GatsbyImage
+            className="GabImage"
+            image={data.gabriel.childImageSharp.gatsbyImageData}
+          />
           <h2>{data.pageDataStoryToml.firstMainChar.name}</h2>
           <p>{data.pageDataStoryToml.firstMainChar.bio}</p>
         </div>
         <div className="Reb">
-          <Img className="RebImage" fluid={data.rebecca.childImageSharp.fluid} />
+          <GatsbyImage
+            className="RebImage"
+            image={data.rebecca.childImageSharp.gatsbyImageData}
+          />
           <h2>{data.pageDataStoryToml.secondMainChar.name}</h2>
           <p>{data.pageDataStoryToml.secondMainChar.bio}</p>
         </div>
@@ -202,27 +215,27 @@ const StoryPage = ({ data }) => (
       <DistrictGrid>
         <div>
           <span>{data.pageDataStoryToml.districts.name[0]}</span>
-          <Img fluid={data.anchor.childImageSharp.fluid} />
+          <GatsbyImage image={data.anchor.childImageSharp.gatsbyImageData} />
         </div>
         <div>
           <span>{data.pageDataStoryToml.districts.name[1]}</span>
-          <Img fluid={data.downtown.childImageSharp.fluid} />
+          <GatsbyImage image={data.downtown.childImageSharp.gatsbyImageData} />
         </div>
         <div>
           <span>{data.pageDataStoryToml.districts.name[2]}</span>
-          <Img fluid={data.theView.childImageSharp.fluid} />
+          <GatsbyImage image={data.theView.childImageSharp.gatsbyImageData} />
         </div>
         <div>
           <span>{data.pageDataStoryToml.districts.name[3]}</span>
-          <Img fluid={data.devZone.childImageSharp.fluid} />
+          <GatsbyImage image={data.devZone.childImageSharp.gatsbyImageData} />
         </div>
         <div>
           <span>{data.pageDataStoryToml.districts.name[4]}</span>
-          <Img fluid={data.theShard.childImageSharp.fluid} />
+          <GatsbyImage image={data.theShard.childImageSharp.gatsbyImageData} />
         </div>
         <div>
           <span>{data.pageDataStoryToml.districts.name[5]}</span>
-          <Img fluid={data.omniStat.childImageSharp.fluid} />
+          <GatsbyImage image={data.omniStat.childImageSharp.gatsbyImageData} />
         </div>
       </DistrictGrid>
 
@@ -236,9 +249,14 @@ export default StoryPage;
 export const gridSquare = graphql`
   fragment gridSquare on File {
     childImageSharp {
-      fluid(maxWidth: 400, maxHeight: 400, quality: 90, duotone:{ shadow: "#430303", highlight: "#C71C25", opacity: 90 }, cropFocus: CENTER) {
-        ...GatsbyImageSharpFluid_withWebp_tracedSVG
-      }
+      gatsbyImageData(
+        width: 400
+        height: 400
+        transformOptions: {
+          duotone: { shadow: "#430303", highlight: "#C71C25", opacity: 90 }
+          cropFocus: CENTER
+        }
+      )
     }
   }
 `;
@@ -269,48 +287,62 @@ export const query = graphql`
     }
     faithFace: file(relativePath: { regex: "/faith-crouch-face/" }) {
       childImageSharp {
-        fluid(maxWidth: 900, quality: 80, cropFocus: NORTH, duotone:{ shadow: "#5c0c12", highlight: "#C71C25", opacity: 95 }) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          width: 900
+          transformOptions: {
+            cropFocus: NORTH
+            duotone: { shadow: "#5c0c12", highlight: "#C71C25", opacity: 95 }
+          }
+        )
       }
     }
     faithFaceFlip: file(relativePath: { regex: "/faith-crouch-face/" }) {
       childImageSharp {
-        fluid(maxWidth: 900, quality: 80, cropFocus: NORTH, duotone:{ shadow: "#5c0c12", highlight: "#C71C25", opacity: 95 }) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          width: 900
+          transformOptions: {
+            cropFocus: NORTH
+            duotone: { shadow: "#5c0c12", highlight: "#C71C25", opacity: 95 }
+          }
+        )
       }
     }
-    gabriel:file(relativePath: { regex: "/gabriel-kruger/" }) {
+    gabriel: file(relativePath: { regex: "/gabriel-kruger/" }) {
       childImageSharp {
-        fluid(maxWidth: 600, quality: 90, duotone: { highlight: "#f00e2e", shadow: "#192550" }) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
+        gatsbyImageData(
+          width: 600
+          transformOptions: {
+            duotone: { highlight: "#f00e2e", shadow: "#192550" }
+          }
+        )
       }
     }
-    rebecca:file(relativePath: { regex: "/rebecca-square/" }) {
+    rebecca: file(relativePath: { regex: "/rebecca-square/" }) {
       childImageSharp {
-        fluid(maxWidth: 600, quality: 90, duotone: { highlight: "#0ec4f1", shadow: "#192550" }) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
+        gatsbyImageData(
+          width: 600
+          transformOptions: {
+            duotone: { highlight: "#0ec4f1", shadow: "#192550" }
+          }
+        )
       }
     }
-    devZone:file(relativePath: { regex: "/development-zone/" }) {
+    devZone: file(relativePath: { regex: "/development-zone/" }) {
       ...gridSquare
     }
-    omniStat:file(relativePath: { regex: "/hideout/" }) {
+    omniStat: file(relativePath: { regex: "/hideout/" }) {
       ...gridSquare
     }
-    theView:file(relativePath: { regex: "/the-view/" }) {
+    theView: file(relativePath: { regex: "/the-view/" }) {
       ...gridSquare
     }
-    anchor:file(relativePath: { regex: "/anchor/" }) {
+    anchor: file(relativePath: { regex: "/anchor/" }) {
       ...gridSquare
     }
-    theShard:file(relativePath: { regex: "/the-shard/" }) {
+    theShard: file(relativePath: { regex: "/the-shard/" }) {
       ...gridSquare
     }
-    downtown:file(relativePath: { regex: "/downtown/" }) {
+    downtown: file(relativePath: { regex: "/downtown/" }) {
       ...gridSquare
     }
   }

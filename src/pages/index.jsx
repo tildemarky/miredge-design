@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import styled from "styled-components";
-import Img from "gatsby-image";
+import { StaticImage } from "gatsby-plugin-image";
 import { device } from "../components/device";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -173,16 +173,16 @@ const IndexPage = ({ data }) => (
   <Layout>
     <Container>
       <LandingPage>
-        <Img fluid={data.faithRun.childImageSharp.fluid} />
+        <StaticImage src="../images/faith-run.png" />
         <h1>
           IT&apos;S TIME TO <span>RUN</span>
         </h1>
       </LandingPage>
       <ArrowDown icon={faChevronDown} />
       <PostLandingPageContent>
-        <Img
+        <StaticImage
           className="GatsbyImage"
-          fluid={data.blackNovFighter.childImageSharp.fluid}
+          src="../images/black-nov-fighter.jpg"
         />
         <div className="FirstBanner">
           <h2>
@@ -199,9 +199,9 @@ const IndexPage = ({ data }) => (
             not clamping down as hard on them as they could.
           </p>
         </div>
-        <Img
+        <StaticImage
           className="GatsbyImageFlip"
-          fluid={data.armedForces.childImageSharp.fluid}
+          src="../images/armed-forces.jpg"
         />
         <div className="SecondBanner">
           <h2>
@@ -222,29 +222,3 @@ const IndexPage = ({ data }) => (
 );
 
 export default IndexPage;
-
-export const query = graphql`
-  query {
-    faithRun: file(relativePath: { regex: "/faith-run/" }) {
-      childImageSharp {
-        fluid(maxWidth: 1500, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
-      }
-    }
-    armedForces: file(relativePath: { regex: "/armed-forces/" }) {
-      childImageSharp {
-        fluid(maxWidth: 900, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
-      }
-    }
-    blackNovFighter: file(relativePath: { regex: "/black-nov-fighter/" }) {
-      childImageSharp {
-        fluid(maxWidth: 900, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
-      }
-    }
-  }
-`;
